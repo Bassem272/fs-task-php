@@ -20,10 +20,10 @@ class Connection
         // $userpassword = '1234';
         // $dbname = 'store1';
             // Use the Railway MySQL connection details
-            $hostname = 'junction.proxy.rlwy.net';  // The host from your Railway connection string
+            $hostname = 'mysql.railway.internal';  // The host from your Railway connection string
             $username = 'root';  // The username for Railway
             $userpassword = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';  // The password for Railway
-            $dbname = 'store1';  // The name of the database (or the one you imported)
+            $dbname = 'railway';  // The name of the database (or the one you imported)
     
         // Create connection
         $this->conn = new mysqli($hostname, $username, $userpassword, $dbname);
