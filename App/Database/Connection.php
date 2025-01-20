@@ -15,23 +15,11 @@ class Connection
      */
     public function __construct()
     {
-        // $hostname = 'localhost';
-        // $username = 'root';
-        // $userpassword = '1234';
-        // $dbname = 'store1';
-            // // Use the Railway MySQL connection details
-            // $hostname = 'mysql.railway.internal';  // The host from your Railway connection string
-            // $username = 'root';  // The username for Railway
-            // $userpassword = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';  // The password for Railway
-            // $dbname = 'railway';  // The name of the database (or the one you imported)
-    
-        // Create connection
-        // $this->conn = new mysqli($hostname, $username, $userpassword, $dbname);
         $host = 'junction.proxy.rlwy.net'; // Railway DB Host
         $port = '46142';                   // Railway DB Port
         $user = 'root';                    // Username
-        $password = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';                    // Your MySQL password
-        $database = 'railway';  // Your database name (or you can leave it empty for general queries)
+        $password = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';    // MySQL password
+        $database = 'railway';  // Database name 
         
         // Create a MySQL connection
         $this->conn = new mysqli($host, $user, $password, $database, $port);
