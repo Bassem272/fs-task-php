@@ -16,7 +16,7 @@ class GraphQLServer
      */
     public function __construct()
     {
-        // Load the schema file dynamically
+        error_log("Inside GraphQLServer class");
         $this->schema = require __DIR__ . '/../schema.php';
     }
 

@@ -4,7 +4,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use App\GraphQL\GraphQLServer;
 
-// CORS Handling (Optional: Can be moved to middleware in production)
+
+// CORS Handling 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -19,7 +20,7 @@ try {
     $server = new GraphQLServer();
     $output = $server->handleRequest(file_get_contents('php://input'));
 } catch (\Exception $e) {
-    // Gracefully handle errors
+    // Handle errors
     $output = [
         'errors' => [
             ['message' => $e->getMessage()],
