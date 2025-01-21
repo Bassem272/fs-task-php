@@ -3,6 +3,7 @@
 namespace App\Database;
 
 use mysqli;
+use Dotenv\Dotenv;
 
 class Connection
 {
@@ -15,29 +16,19 @@ class Connection
      */
     public function __construct()
     {
-        // $hostname = 'localhost';
-        // $username = 'root';
-        // $userpassword = '1234';
-        // $dbname = 'store1';
-            // // Use the Railway MySQL connection details
-            // $hostname = 'mysql.railway.internal';  // The host from your Railway connection string
-            // $username = 'root';  // The username for Railway
-            // $userpassword = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';  // The password for Railway
-            // $dbname = 'railway';  // The name of the database (or the one you imported)
-    
+        // Load environment variables from the .env file
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../'); 
+        $dotenv->load();
+
+        // Get DB credentials from .env
+        $hostname = $_ENV['DB_HOST'];
+        $user = $_ENV['DB_USER'];
+        $password = $_ENV['DB_PASSWORD'];
+        $database = $_ENV['DB_NAME'];
+        $port = $_ENV['DB_PORT'] ?? 3306; // Default MySQL port is 3306
+
         // Create connection
-        // $this->conn = new mysqli($hostname, $username, $userpassword, $dbname);
-        $host = 'junction.proxy.rlwy.net'; // Railway DB Host
-        $port = '46142';                   // Railway DB Port
-        $user = 'root';                    // Username
-        $password = 'VQzXuJBkVxDCwHBnOUcaVJFCExlTVpyN';                    // Your MySQL password
-        $database = 'railway';  // Your database name (or you can leave it empty for general queries)
-        
-        // Create a MySQL connection
-        $this->conn = new mysqli($host, $user, $password, $database, $port);
-        
-
-
+        $this->conn = new mysqli($hostname, $user, $password, $database, $port);
 
         // Check connection and throw an exception on failure
         if ($this->conn->connect_error) {
