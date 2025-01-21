@@ -16,6 +16,7 @@ class Connection
      */
     public function __construct()
     {
+
         // Load environment variables from the .env file
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../../'); 
         $dotenv->load();
